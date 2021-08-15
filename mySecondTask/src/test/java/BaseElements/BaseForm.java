@@ -3,21 +3,22 @@ package BaseElements;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class BaseForm extends BaseElement {
+public class BaseForm {
+    private String loggerName;
+    private BaseElement baseElement = new BaseElement();
 
-    public BaseForm(WebDriver driver) {
-        super(driver);
+    public boolean isDisplayed(By elementBy) {
+        baseElement.waitVisibility(elementBy);
+        return baseElement.elementIsDisplayed(elementBy);
     }
 
-    private String loggerName;
-    private By basicAuth = By.xpath("//div[@id='content']//p[(contains(text(), 'Congratulations! You must have the proper credentials.'))]");
-
-
-
-    public boolean congPageIsDisplayed() {
-        waitVisibility(basicAuth);
-        elementIsDisplayed(basicAuth);
-        return true;
+    public void click(By elementBy) {
+        baseElement.waitVisibility(elementBy);
+        baseElement.clickElement(elementBy);
+    }
+    public String getSomeThingText (By elementBy){
+        baseElement.waitVisibility(elementBy);
+        return baseElement.getText(elementBy);
     }
 
 }

@@ -1,13 +1,12 @@
 package anyPages;
 
-import BaseElements.BaseElement;
+import BaseElements.BaseForm;
+import Utils.DriverUtils;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
-public class AlertPageForm extends BaseElement {
-    public AlertPageForm(WebDriver driver) {
-        super(driver);
-    }
+public class AlertPageForm extends BaseForm {
+
+    private DriverUtils driverUtils = new DriverUtils();
 
     private By alertPage = By.xpath("//div[@id='content']//h3[text()='JavaScript Alerts']");
     private By jsAlert = By.xpath("//div[@id='content']//button[@onclick='jsAlert()']");
@@ -15,43 +14,38 @@ public class AlertPageForm extends BaseElement {
     private By jsPrompt = By.xpath("//div[@id='content']//button[@onclick='jsPrompt()']");
     private By alertResult = By.xpath("//p[@id='result']");
 
+
+
     public boolean alertPageIsOpen() {
-        waitVisibility(alertPage);
-        elementIsDisplayed(alertPage);
-        return true;
+        return isDisplayed(alertPage);
     }
 
     public void clickJSAlert() {
-        waitVisibility(jsAlert);
-        clickElement(jsAlert);
+        click(jsAlert);
     }
 
     public void clickJSConfirm() {
-        waitVisibility(jsConfirm);
-        clickElement(jsConfirm);
+        click(jsConfirm);
     }
 
     public void clickJSPrompt() {
-        waitVisibility(jsPrompt);
-        clickElement(jsPrompt);
+        click(jsPrompt);
     }
 
     public String jsAlertText() {
-        workThisAlertsText();
-        return workThisAlertsText();
+        return driverUtils.workThisAlertsText();
     }
 
-    public void jsAlertButtom() {
-        workThisAlertsAccept();
+    public void jsAlertButton() {
+        driverUtils.workThisAlertsAccept();
     }
 
-    public String getResulText() {
-        String resultText = getText(alertResult);
-        return resultText;
+    public String getResultText() {
+        return getSomeThingText(alertResult);
     }
 
     public void alertPromptTextSend(String anyText) {
-        sendAlertText(anyText);
+        driverUtils.sendAlertText(anyText);
     }
 
 }
