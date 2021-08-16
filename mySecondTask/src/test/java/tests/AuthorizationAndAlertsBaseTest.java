@@ -6,7 +6,6 @@ import Utils.DriverUtils;
 import anyPages.AlertPageForm;
 import anyPages.BasicAuthorizationPage;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 

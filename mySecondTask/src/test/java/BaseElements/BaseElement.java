@@ -10,23 +10,27 @@ import org.slf4j.LoggerFactory;
 
 public class BaseElement {
 
-    private String loggerName;
-    private static final Logger logger = LoggerFactory.getLogger(BaseElement.class);
+    private Logger logger = LoggerFactory.getLogger(BaseElement.class);
 
     public void waitVisibility(By elementBy) {
         WaitUtils.wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(elementBy));
+        logger.info("Waiting element");
     }
 
     public boolean elementIsDisplayed(By elementBy) {
+        logger.info("Display element");
         return DriverFactory.driver.findElement(elementBy).isDisplayed();
     }
 
     public void clickElement(By elementBy){
         DriverFactory.driver.findElement(elementBy).click();
+        logger.info("Click element");
     }
 
     public String getText(By elementBy) {
+        logger.info("Get attribute text");
         return DriverFactory.driver.findElement(elementBy).getText();
+
     }
 
 }
