@@ -5,8 +5,7 @@ import Utils.DriverFactory;
 import Utils.DriverUtils;
 import anyPages.AlertPageForm;
 import anyPages.BasicAuthorizationPage;
-import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.AfterTest;
+import org.openqa.selenium.support.PageFactory;import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 
 public class AuthorizationAndAlertsBaseTest {
