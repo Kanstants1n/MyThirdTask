@@ -1,32 +1,27 @@
 package BaseElements;
 
+import Utils.DriverFactory;
+import Utils.WaitUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class BaseForm {
+public abstract class BaseForm {
     private String loggerName;
-    private BaseElement baseElement = new BaseElement();
+    private BaseElement baseElement;
     private Logger logger = LoggerFactory.getLogger(BaseForm.class);
 
-
-
-    public boolean isDisplayed(By elementBy) {
-        logger.info("Page element is display");
-        baseElement.waitVisibility(elementBy);
-        return baseElement.elementIsDisplayed(elementBy);
+    public void waitForOpen(By elementBy){
+        WaitUtils.wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(elementBy));
+        logger.info("{}: Waiting element", loggerName);
     }
 
-    public void click(By elementBy) {
-        baseElement.waitVisibility(elementBy);
-        baseElement.clickElement(elementBy);
-        logger.info("Element clicked");
-    }
-    public String getSomeThingText (By elementBy){
-        baseElement.waitVisibility(elementBy);
-        logger.info("Something text: {}", baseElement.getText(elementBy));
-        return baseElement.getText(elementBy);
+    public boolean isDisplayed(By elementBy, String loggerName) {
+        logger.info("Display — {}", loggerName);
+        return DriverFactory.driver.findElement(elementBy).isDisplayed();
     }
 
 }

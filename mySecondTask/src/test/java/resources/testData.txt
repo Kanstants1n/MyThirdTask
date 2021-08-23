@@ -1,3 +1,0 @@
-startPage = http://the-internet.herokuapp.com
-loginValue = admin
-passValue = admin

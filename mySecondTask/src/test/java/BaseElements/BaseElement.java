@@ -1,36 +1,63 @@
 package BaseElements;
 
 import Utils.DriverFactory;
+import Utils.DriverUtils;
 import Utils.WaitUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-public class BaseElement {
+public abstract class BaseElement {
 
+    private By elementBy;
+    private String loggerName;
     private Logger logger = LoggerFactory.getLogger(BaseElement.class);
+    private static Actions actionMouse = new Actions(DriverFactory.driver);
 
-    public void waitVisibility(By elementBy) {
-        WaitUtils.wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(elementBy));
-        logger.info("Waiting element");
+    public BaseElement(By elementBy, String loggerName){
+        this.elementBy = elementBy;
+        this.loggerName = loggerName;
     }
 
-    public boolean elementIsDisplayed(By elementBy) {
-        logger.info("Display element");
-        return DriverFactory.driver.findElement(elementBy).isDisplayed();
+    protected WebElement findElement(){
+        return DriverFactory.driver.findElement(elementBy);
     }
-
-    public void clickElement(By elementBy){
-        DriverFactory.driver.findElement(elementBy).click();
-        logger.info("Click element");
+    public boolean isDisplay(){
+        logger.info("Display {}", loggerName);
+        return findElement().isDisplayed();
     }
-
-    public String getText(By elementBy) {
-        logger.info("Get attribute text");
-        return DriverFactory.driver.findElement(elementBy).getText();
-
+    public void click(){
+        logger.info("Clicked {}", loggerName);
+        findElement().click();
+    }
+    public String getText(){
+        logger.info("{} text get: {}", loggerName, findElement().getText());
+        return findElement().getText();
+    }
+    public void actionMouse(){
+        logger.info("Move cursor to {}", loggerName);
+        actionMouse.moveToElement(findElement()).build().perform();
+    }
+    public String getAttr(String anyAttr){
+        logger.info("{} attribute — {}", loggerName, findElement().getAttribute(anyAttr));
+        return findElement().getAttribute(anyAttr);
+    }
+    public void pushKeyRight(){
+        logger.info("Push right");
+        findElement().sendKeys(Keys.ARROW_RIGHT);
+    }
+    public void switchToIFrame(){
+        logger.info("Select {}", loggerName);
+        DriverFactory.driver.switchTo().frame(findElement());
+    }
+    public String getCssValue(String anyCssValue){
+        logger.info("Get CSS value — {}", loggerName);
+        return findElement().getCssValue(anyCssValue);
     }
 
 }
