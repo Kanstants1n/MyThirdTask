@@ -1,5 +1,6 @@
 package Utils;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,6 +9,8 @@ import javax.swing.*;
 
 public class DriverUtils {
     private static Logger logger = LoggerFactory.getLogger(DriverUtils.class);
+    private static Actions action = new Actions(DriverFactory.driver);
+
 
     public static void goToUrl(String startPage){
         DriverFactory.driver.get(startPage);
@@ -37,5 +40,16 @@ public class DriverUtils {
         DriverFactory.driver.switchTo().alert().sendKeys(anyString);
         logger.info("Introduced the following string in the alert text field: {}", anyString);
     }
+    public static void holdShift(){
+        action.keyDown(Keys.SHIFT).perform();
+    }
+    public static void pushArrowRight(int someNumber) {
+        for (int i = 0; i < someNumber; i++) {
+            action.sendKeys(Keys.ARROW_RIGHT).perform();
+            logger.info("Push right");
+        }
+        logger.info("String length {}", someNumber);
+    }
+
 
 }

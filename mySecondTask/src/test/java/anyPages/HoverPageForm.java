@@ -19,7 +19,7 @@ public class HoverPageForm extends BaseForm {
         By hoverUsers = By.xpath(anyXPath + userNumber + "]");
         MouseAction hoverMouseUser = new MouseAction(hoverUsers, "User" + userNumber);
         waitForOpen(hoverUsers);
-        hoverMouseUser.actionMouse();
+        hoverMouseUser.actionMouse(50, 50);
     }
 
     public String verificationUserName(String userNumber) {

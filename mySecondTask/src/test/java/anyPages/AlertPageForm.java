@@ -1,6 +1,5 @@
 package anyPages;
 
-import BaseElements.BaseElement;
 import BaseElements.BaseForm;
 import BaseElements.SomeButton;
 import BaseElements.TextField;
