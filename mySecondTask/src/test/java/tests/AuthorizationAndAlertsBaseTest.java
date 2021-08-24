@@ -16,7 +16,6 @@ public class AuthorizationAndAlertsBaseTest {
 
     public String userName = ConfigManager.getProperties("loginValue");
     public String passUser = ConfigManager.getProperties("passValue");
-    public String alignText = ConfigManager.getProperties("leftAlign");
     public String protocol = ConfigManager.getProperties("protocol");
     public String host = ConfigManager.getProperties("startPage");
     public String pageOne = ConfigManager.getProperties("testOnePath");
