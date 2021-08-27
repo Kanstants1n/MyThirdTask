@@ -1,3 +1,5 @@
 .gitignore
 *.xml
 *.iml
+*.class
+/target
