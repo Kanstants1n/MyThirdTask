@@ -5,13 +5,13 @@ import Utils.UnchangeableValue;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class testInfiniteScrollPage extends ConfigurationForTests{
+public class testInfiniteScrollPage extends ConfigurationForTests {
 
     @Test
-    public void testInfiniteScroll() throws InterruptedException {
+    public void testInfiniteScroll() {
         DriverUtils.goToUrl(urlSecondPage);
         Assert.assertTrue(infiniteScrollPageForm.InfiniteScrollPageIsOpen(), UnchangeableValue.infiniteScrollPageNotOpen);
         infiniteScrollPageForm.scrollToParagraphWeNeed();
-        Thread.sleep(20000);
+        Assert.assertEquals(infiniteScrollPageForm.getDivNumber(), engineersAge, UnchangeableValue.numberDivMessageError);
     }
 }

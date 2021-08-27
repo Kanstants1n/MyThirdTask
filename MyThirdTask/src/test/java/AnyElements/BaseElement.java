@@ -31,11 +31,6 @@ public abstract class BaseElement {
         return findElement().isDisplayed();
     }
 
-    public void click() {
-        logger.info("Clicked {}", loggerName);
-        findElement().click();
-    }
-
     public String getText() {
         logger.info("{} text get: {}", loggerName, findElement().getText());
         return findElement().getText();
@@ -46,8 +41,12 @@ public abstract class BaseElement {
         logger.info("Clicked element with JS help — {}", loggerName);
     }
 
-    public void jsScrollTo() {
-        JavaScriptActions.scrollToSomeElement();
-        logger.info("Scroll to element — {}", loggerName);
+    public void scrollTo() {
+        JavaScriptActions.scrollToSomeElement(findElement());
+        logger.info("Scroll to — {}", loggerName);
+    }
+
+    public void senKeys(String anyString) {
+        findElement().sendKeys(anyString);
     }
 }

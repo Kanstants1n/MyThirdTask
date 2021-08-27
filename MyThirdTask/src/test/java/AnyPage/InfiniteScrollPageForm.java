@@ -2,20 +2,17 @@ package AnyPage;
 
 import AnyElements.BaseForm;
 import AnyElements.SomeButton;
+import AnyElements.TextField;
 import Utils.ConfigManager;
-import Utils.DriverFactory;
-import Utils.JavaScriptActions;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 
 public class InfiniteScrollPageForm extends BaseForm {
 
     private Integer engineersAge = Integer.parseInt(ConfigManager.getProperties("engineersAge"));
     private By infinitePageOpen = By.xpath("//div[@Class = 'example']");
-    private By paragraphInInfiniteScroll = By.xpath("//div[@Class = 'jscroll-inner']//div");
-    private By inInfiniteScroll = By.xpath("//div[@Class = 'jscroll-inner']//div[1]");
+    private By allDiv = By.xpath("//div[@Class = 'jscroll-inner']//div");
 
-    private SomeButton paragraphWeNeed = new SomeButton(paragraphInInfiniteScroll, "Scroll to paragraph");
+    private TextField numberAllDiv = new TextField(allDiv, "All paragraph");
 
     public boolean InfiniteScrollPageIsOpen() {
         waitForOpen(infinitePageOpen, "infinitePageOpen");
@@ -23,11 +20,16 @@ public class InfiniteScrollPageForm extends BaseForm {
     }
 
     public void scrollToParagraphWeNeed() {
-        for (int i = 2; i < engineersAge; i++) {
-            By divElement = By.xpath("//div[@Class = 'jscroll-inner']//div[" + i + "]");
-            waitForOpen(divElement, "Div Element " + i);
-            JavaScriptActions.scrollToSomeElement();
+        for (int divNumber = 1; divNumber < engineersAge - 1; divNumber++) {
+            By infiniteScroll = By.xpath("//div[@Class = 'jscroll-inner']//div[" + divNumber + "]");
+            SomeButton scrollToParagraph = new SomeButton(infiniteScroll, "Paragraph " + divNumber);
+            waitForOpen(infiniteScroll, "infiniteScroll" + divNumber);
+            scrollToParagraph.scrollTo();
         }
+    }
+
+    public String getDivNumber() {
+        return Integer.toString(numberAllDiv.numberElements());
     }
 
 }

@@ -7,13 +7,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
 public abstract class BaseForm {
 
-    private String loggerName;
     private Logger logger = LoggerFactory.getLogger(BaseForm.class);
 
-    public void waitForOpen(By elementBy, String loggerName){
-        WaitUtils.wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(elementBy));
+    public void waitForOpen(By elementBy, String loggerName) {
+        WaitUtils.wait.until(ExpectedConditions.visibilityOfElementLocated(elementBy));
         logger.info("Waiting element: {}", loggerName);
     }
 

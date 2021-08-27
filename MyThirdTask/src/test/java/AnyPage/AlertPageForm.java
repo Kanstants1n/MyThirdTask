@@ -49,7 +49,7 @@ public class AlertPageForm extends BaseForm {
         return DriverUtils.workThisAlertsText();
     }
 
-    public void sendJSPromptText(){
+    public void sendJSPromptText() {
         DriverUtils.sendAlertText(AnyUtils.randomString);
     }
 

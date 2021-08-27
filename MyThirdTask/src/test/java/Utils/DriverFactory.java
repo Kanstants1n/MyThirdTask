@@ -23,7 +23,7 @@ public class DriverFactory {
             } else if (browserName.equalsIgnoreCase("FF")) {
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
-            } else if(browserName.equalsIgnoreCase(IE)) {
+            } else if (browserName.equalsIgnoreCase(IE)) {
                 WebDriverManager.iedriver().setup();
                 driver = new InternetExplorerDriver();
             }
@@ -31,6 +31,7 @@ public class DriverFactory {
         driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }
+
     public static void quit() {
         System.out.println("Quiting the browser");
         driver.quit();

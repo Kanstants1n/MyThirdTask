@@ -31,7 +31,8 @@ public class ConfigManager {
         }
 
     }
-    public static String getProperties(String key){
+
+    public static String getProperties(String key) {
         return PROPERTIES.getProperty(key);
     }
 }

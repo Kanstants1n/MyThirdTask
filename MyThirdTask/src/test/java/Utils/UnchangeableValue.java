@@ -12,4 +12,10 @@ public class UnchangeableValue {
     public static final String messageIfValueNotEqual = "Value not Equal";
     //Infinite Scroll
     public static final String infiniteScrollPageNotOpen = "Infinite Scroll page is not open!";
+    public static final String numberDivMessageError = "The number of div does not match";
+    //File Uploader
+    public static final String fileUploaderNotOpen = "Page not open";
+    public static final String fileUploaderResultMessage = "File Uploaded!";
+    public static final String fileUploaderResultMessageFalse = "File not uploaded";
+    public static final String fileUploaderFileNameNotMatches = "File name not matches";
 }
