@@ -7,11 +7,11 @@ public class JavaScriptActions {
 
     public static void clickElementWithJS(WebElement element) {
         JavascriptExecutor javascriptExecutor = (JavascriptExecutor)DriverFactory.driver;
-        javascriptExecutor.executeScript("arguments[0].click()", element);
+        javascriptExecutor.executeScript(AnyJSScripts.jsClick, element);
     }
 
     public static void scrollToSomeElement(WebElement element) {
         JavascriptExecutor javascriptExecutor = (JavascriptExecutor)DriverFactory.driver;
-        javascriptExecutor.executeScript("arguments[0].scrollIntoView(true)", element);
+        javascriptExecutor.executeScript(AnyJSScripts.jsScroll, element);
     }
 }

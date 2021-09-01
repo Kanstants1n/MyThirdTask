@@ -8,7 +8,7 @@ import Utils.DriverFactory;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 
-public abstract class ConfigurationForTests {
+public abstract class BaseTest {
     public String engineersAge = ConfigManager.getProperties("engineersAge");
     public String pathToFile = ConfigManager.getProperties("pathToFile");
     public String nameFile = ConfigManager.getProperties("fileName");
